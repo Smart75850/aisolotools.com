@@ -12,6 +12,17 @@
   }
   .container { max-width: 880px; margin: 0 auto; padding: 60px 24px; }
 
+  .lang-bar { text-align: right; margin-bottom: 20px; }
+  .lang-btn {
+    background: transparent; border: 1px solid #3a3a5a; color: #9090b0; padding: 4px 12px;
+    border-radius: 4px; cursor: pointer; font-size: 13px; font-family: inherit; transition: all 0.2s;
+  }
+  .lang-btn:hover { border-color: #6366f1; color: #fff; }
+  .lang-btn.active { background: #6366f1; border-color: #6366f1; color: #fff; }
+
+  /* 语言切换：html lang 属性控制显示/隐藏 */
+  html[lang="zh-CN"] [lang="en"], html[lang="en"] [lang="zh"] { display: none; }
+
   .logo { font-size: 48px; margin-bottom: 8px; }
   h1 { font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
   .subtitle { font-size: 18px; color: #a0a0b0; margin-bottom: 40px; }
@@ -39,9 +50,7 @@
   .check { color: #22c55e; }
   .cross { color: #ef4444; }
 
-  .price-box {
-    display: flex; gap: 20px; flex-wrap: wrap;
-  }
+  .price-box { display: flex; gap: 20px; flex-wrap: wrap; }
   .price-card {
     flex: 1; min-width: 250px; background: #12121c; border: 1px solid #1e1e30; border-radius: 10px; padding: 28px;
     text-align: center;
@@ -70,100 +79,136 @@
     .price-box { flex-direction: column; }
   }
 </style>
+<script>
+function setLang(lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  localStorage.setItem('lang', lang);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  setLang(localStorage.getItem('lang') || 'zh');
+});
+</script>
 </head>
 <body>
 <div class="container">
 
+  <div class="lang-bar">
+    <button class="lang-btn active" data-lang="zh" onclick="setLang('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+
   <div class="logo">&#128269;</div>
   <h1>Smart Agent</h1>
-  <p class="subtitle">7 平台社媒内容采集 + AI 爆款分析<br>一人公司的情报系统</p>
+
+  <p class="subtitle" lang="zh">7 平台社媒内容采集 + AI 爆款分析<br>一人公司的情报系统</p>
+  <p class="subtitle" lang="en">7-Platform Social Media Scraper + AI Viral Analytics<br>Intelligence system for one-person businesses</p>
 
   <div class="badges">
     <span class="badge">B站</span><span class="badge">抖音</span><span class="badge">小红书</span>
     <span class="badge">知乎</span><span class="badge">快手</span><span class="badge">微博</span>
-    <span class="badge">贴吧</span><span class="badge">纯 HTTP 直连</span>
-    <span class="badge">零浏览器</span>
+    <span class="badge">贴吧</span>
+    <span class="badge" lang="zh">纯 HTTP 直连</span><span class="badge" lang="en">Pure HTTP</span>
+    <span class="badge" lang="zh">零浏览器</span><span class="badge" lang="en">No Browser</span>
   </div>
 
-  <!-- 核心卖点 -->
   <div class="section">
-    <h2>核心能力</h2>
+    <h2 lang="zh">核心能力</h2><h2 lang="en">Core Features</h2>
     <div class="feature-grid">
       <div class="feature-card">
         <div class="icon">&#9889;</div>
-        <h3>纯 HTTP 直连</h3>
-        <p>7 个平台全部绕过反爬，无需打开浏览器。平均延迟 3-4 秒，毫秒级响应。</p>
+        <h3 lang="zh">纯 HTTP 直连</h3><h3 lang="en">Pure HTTP Direct</h3>
+        <p lang="zh">7 个平台全部绕过反爬，无需打开浏览器。平均延迟 3-4 秒，毫秒级响应。</p>
+        <p lang="en">Bypass anti-crawl on all 7 platforms. Zero browser, 3-4s avg latency.</p>
       </div>
       <div class="feature-card">
         <div class="icon">&#129504;</div>
-        <h3>7 个 AI Agent</h3>
-        <p>爆款识别、选品分析、视频拆解、评论情绪、营销文案、内容改写、配图策略 —— 全自动。</p>
+        <h3 lang="zh">7 个 AI Agent</h3><h3 lang="en">7 AI Agents</h3>
+        <p lang="zh">爆款识别、选品分析、视频拆解、评论情绪、营销文案、内容改写、配图策略 —— 全自动。</p>
+        <p lang="en">Trend scout, product miner, video analyst, sentiment reader, copy writer, content remixer, pic tactic.</p>
       </div>
       <div class="feature-card">
         <div class="icon">&#128640;</div>
-        <h3>Go 高性能版</h3>
-        <p>6.7MB 单文件二进制，零依赖，双击即用。Windows / Mac / Linux 全平台支持。</p>
+        <h3 lang="zh">Go 高性能版</h3><h3 lang="en">Go Edition</h3>
+        <p lang="zh">6.7MB 单文件二进制，零依赖，双击即用。Windows / Mac / Linux 全平台支持。</p>
+        <p lang="en">6.7MB single binary, zero deps. Windows / Mac / Linux.</p>
       </div>
       <div class="feature-card">
         <div class="icon">&#128268;</div>
-        <h3>LangGraph 编排</h3>
-        <p>5 平台并发搜索 → 去重排序 → 7 Agent 全链路分析 → 一键输出报告。</p>
+        <h3 lang="zh">LangGraph 编排</h3><h3 lang="en">LangGraph Pipeline</h3>
+        <p lang="zh">5 平台并发搜索 → 去重排序 → 7 Agent 全链路分析 → 一键输出报告。</p>
+        <p lang="en">5-platform fan-out → dedup → 7 Agent chain → one-click report.</p>
       </div>
     </div>
   </div>
 
-  <!-- 功能对比 -->
   <div class="section">
-    <h2>版本对比</h2>
+    <h2 lang="zh">版本对比</h2><h2 lang="en">Version Comparison</h2>
     <table>
       <thead>
-        <tr><th>功能</th><th>开源版</th><th>Pro 版</th></tr>
+        <tr lang="zh"><th>功能</th><th>开源版</th><th>Pro 版</th></tr>
+        <tr lang="en"><th>Feature</th><th>OSS</th><th>Pro</th></tr>
       </thead>
       <tbody>
-        <tr><td>B站/知乎/快手/微博/贴吧 纯HTTP</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
-        <tr><td>抖音/小红书 浏览器模式</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
-        <tr><td>抖音/小红书 <strong>纯HTTP直连</strong></td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>7 个 AI Agent 分析</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>Go 高性能版 (6.7MB)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>Docker 一键部署</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>断点续爬 + 增量采集</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>海外平台 (YT/IG/TT/X/Reddit)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>MCP Server (接 Claude/Cursor)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
-        <tr><td>MCP Server (接 Claude/Cursor)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>B站/知乎/快手/微博/贴吧 纯HTTP</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Bilibili/Zhihu/Kuaishou/Weibo/Tieba HTTP</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>抖音/小红书 浏览器模式</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Douyin/XHS Browser Mode</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>抖音/小红书 <strong>纯HTTP直连</strong></td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Douyin/XHS <strong>Pure HTTP</strong></td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>7 个 AI Agent 分析</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>7 AI Agents</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>Go 高性能版 (6.7MB)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Go Binary (6.7MB)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>Docker 一键部署</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Docker Deploy</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>断点续爬 + 增量采集</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Checkpoint Resume</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>海外平台 (YT/IG/TT/X/Reddit)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Overseas (YT/IG/TT/X/Reddit)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>完整源码交付</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>Full Source Code</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="zh"><td>MCP Server (接 Claude/Cursor)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr lang="en"><td>MCP Server (Claude/Cursor)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- 定价 -->
   <div class="section">
-    <h2>定价</h2>
+    <h2 lang="zh">定价</h2><h2 lang="en">Pricing</h2>
     <div class="price-box">
       <div class="price-card">
-        <div class="name">开源版</div>
-        <div class="amount">免费</div>
-        <div class="desc">7 平台全覆盖<br>浏览器 + 纯 HTTP 双模式<br>50 次试用额度<br>GitHub 开源</div>
-        <a href="https://github.com/Smart75850/smart-agent" class="btn btn-outline">GitHub 下载</a>
+        <div class="name" lang="zh">开源版</div><div class="name" lang="en">Open Source</div>
+        <div class="amount" lang="zh">免费</div><div class="amount" lang="en">Free</div>
+        <div class="desc" lang="zh">7 平台全覆盖<br>浏览器 + 纯 HTTP 双模式<br>50 次试用额度<br>GitHub 开源</div>
+        <div class="desc" lang="en">All 7 platforms<br>Browser + HTTP dual mode<br>50 free searches<br>GitHub open source</div>
+        <a href="https://github.com/Smart75850/smart-agent" class="btn btn-outline" lang="zh">GitHub 下载</a>
+        <a href="https://github.com/Smart75850/smart-agent" class="btn btn-outline" lang="en">GitHub Download</a>
       </div>
       <div class="price-card pro">
-        <div class="name">Pro 版</div>
+        <div class="name" lang="zh">Pro 版</div><div class="name" lang="en">Pro Edition</div>
         <div class="amount"><span class="unit">&#165;</span>399</div>
-        <div class="desc">全平台纯 HTTP 直连<br>7 AI Agent + 完整源码<br>Go 版 + Docker 部署<br>一次性交付，永久使用</div>
-        <a href="#contact" class="btn btn-primary">获取 Pro 版</a>
+        <div class="desc" lang="zh">全平台纯 HTTP 直连<br>7 AI Agent + 完整源码<br>Go 版 + Docker 部署<br>一次性交付，永久使用</div>
+        <div class="desc" lang="en">All-platform pure HTTP<br>7 AI Agents + Full source<br>Go binary + Docker<br>One-time, lifetime</div>
+        <a href="#contact" class="btn btn-primary" lang="zh">获取 Pro 版</a>
+        <a href="#contact" class="btn btn-primary" lang="en">Get Pro</a>
       </div>
     </div>
   </div>
 
-  <!-- 联系 -->
   <div class="section" id="contact">
     <div class="contact">
-      <h3>获取 Pro 版 / 商务合作</h3>
-      <p style="margin-top: 12px;">微信：<strong>smart4906</strong></p>
-      <p style="font-size: 13px; color: #9090b0; margin-top: 8px;">添加请备注：Pro 版本</p>
+      <h3 lang="zh">获取 Pro 版 / 商务合作</h3><h3 lang="en">Get Pro / Business Inquiries</h3>
+      <p style="margin-top: 12px;"><span lang="zh">微信</span><span lang="en">WeChat</span>：<strong>smart4906</strong></p>
+      <p style="font-size: 13px; color: #9090b0; margin-top: 8px;" lang="zh">添加请备注：Pro 版本</p>
+      <p style="font-size: 13px; color: #9090b0; margin-top: 8px;" lang="en">Please mention: Pro</p>
       <p style="margin-top: 16px;">
         <a href="https://github.com/Smart75850/smart-agent" class="btn btn-outline" style="margin-right: 10px;">GitHub</a>
-        <a href="https://github.com/Smart75850/awesome-ai-solopreneur-tools" class="btn btn-outline">AI 工具精选</a>
+        <a href="https://github.com/Smart75850/awesome-ai-solopreneur-tools" class="btn btn-outline" lang="zh">AI 工具精选</a>
+        <a href="https://github.com/Smart75850/awesome-ai-solopreneur-tools" class="btn btn-outline" lang="en">AI Tools List</a>
       </p>
-      <p style="font-size: 12px; color: #606070; margin-top: 16px;">⚠️ 本项目仅供学习与学术研究使用，严禁用于任何商业用途。</p>
+      <p style="font-size: 12px; color: #606070; margin-top: 16px;" lang="zh">⚠️ 本项目仅供学习与学术研究使用，严禁用于任何商业用途。</p>
+      <p style="font-size: 12px; color: #606070; margin-top: 16px;" lang="en">⚠️ For learning and academic research only. Commercial use strictly prohibited.</p>
     </div>
   </div>
 
