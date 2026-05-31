@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Agent — AI 多平台内容分析工具</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: #0a0a0f; color: #e0e0e0; line-height: 1.6;
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 60px 24px; }
+
+  .logo { font-size: 48px; margin-bottom: 8px; }
+  h1 { font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+  .subtitle { font-size: 18px; color: #a0a0b0; margin-bottom: 40px; }
+
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+  .badge { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #9090b0; }
+
+  .section { margin-bottom: 48px; }
+  h2 { font-size: 22px; font-weight: 600; color: #ffffff; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid #1e1e30; }
+  h3 { font-size: 16px; font-weight: 600; color: #d0d0e0; margin-bottom: 6px; }
+
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .feature-card {
+    background: #12121c; border: 1px solid #1e1e30; border-radius: 10px; padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .feature-card:hover { border-color: #3a3a5a; }
+  .feature-card .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature-card p { font-size: 14px; color: #9090b0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e1e30; }
+  th { color: #9090b0; font-weight: 500; }
+  td:last-child, th:last-child { text-align: center; }
+  .check { color: #22c55e; }
+  .cross { color: #ef4444; }
+
+  .price-box {
+    display: flex; gap: 20px; flex-wrap: wrap;
+  }
+  .price-card {
+    flex: 1; min-width: 250px; background: #12121c; border: 1px solid #1e1e30; border-radius: 10px; padding: 28px;
+    text-align: center;
+  }
+  .price-card.pro { border-color: #6366f1; background: #0f0f1e; }
+  .price-card .name { font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 4px; }
+  .price-card .amount { font-size: 36px; font-weight: 700; color: #ffffff; margin: 12px 0; }
+  .price-card .amount .unit { font-size: 16px; color: #9090b0; }
+  .price-card .desc { font-size: 13px; color: #9090b0; margin-bottom: 20px; }
+  .btn {
+    display: inline-block; padding: 10px 28px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none;
+    cursor: pointer; border: none; transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn-primary { background: #6366f1; color: #ffffff; }
+  .btn-outline { background: transparent; border: 1px solid #3a3a5a; color: #d0d0e0; }
+
+  .contact { background: #12121c; border: 1px solid #1e1e30; border-radius: 10px; padding: 24px; text-align: center; }
+  .contact strong { color: #6366f1; font-size: 18px; }
+
+  .footer { text-align: center; color: #606070; font-size: 12px; margin-top: 80px; }
+
+  @media (max-width: 600px) {
+    .container { padding: 32px 16px; }
+    h1 { font-size: 24px; }
+    .price-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="logo">&#128269;</div>
+  <h1>Smart Agent</h1>
+  <p class="subtitle">7 平台社媒内容采集 + AI 爆款分析<br>一人公司的情报系统</p>
+
+  <div class="badges">
+    <span class="badge">B站</span><span class="badge">抖音</span><span class="badge">小红书</span>
+    <span class="badge">知乎</span><span class="badge">快手</span><span class="badge">微博</span>
+    <span class="badge">贴吧</span><span class="badge">纯 HTTP 直连</span>
+    <span class="badge">零浏览器</span>
+  </div>
+
+  <!-- 核心卖点 -->
+  <div class="section">
+    <h2>核心能力</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">&#9889;</div>
+        <h3>纯 HTTP 直连</h3>
+        <p>7 个平台全部绕过反爬，无需打开浏览器。平均延迟 3-4 秒，毫秒级响应。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#129504;</div>
+        <h3>7 个 AI Agent</h3>
+        <p>爆款识别、选品分析、视频拆解、评论情绪、营销文案、内容改写、配图策略 —— 全自动。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128640;</div>
+        <h3>Go 高性能版</h3>
+        <p>6.7MB 单文件二进制，零依赖，双击即用。Windows / Mac / Linux 全平台支持。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128268;</div>
+        <h3>LangGraph 编排</h3>
+        <p>5 平台并发搜索 → 去重排序 → 7 Agent 全链路分析 → 一键输出报告。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 功能对比 -->
+  <div class="section">
+    <h2>版本对比</h2>
+    <table>
+      <thead>
+        <tr><th>功能</th><th>开源版</th><th>Pro 版</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>B站 / 知乎 / 快手 / 微博 / 贴吧</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+        <tr><td>抖音 / 小红书</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr><td>7 个 AI Agent 分析</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr><td>Go 高性能版 (6.7MB)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr><td>Docker 一键部署</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr><td>断点续爬 + 增量采集</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr><td>海外平台 (YT/IG/TT/X/Reddit)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+        <tr><td>MCP Server (接 Claude/Cursor)</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 定价 -->
+  <div class="section">
+    <h2>定价</h2>
+    <div class="price-box">
+      <div class="price-card">
+        <div class="name">开源版</div>
+        <div class="amount">免费</div>
+        <div class="desc">5 平台 HTTP 直连<br>50 次试用额度<br>GitHub 开源</div>
+        <a href="https://github.com/Smart75850/smart-agent" class="btn btn-outline">GitHub 下载</a>
+      </div>
+      <div class="price-card pro">
+        <div class="name">Pro 版</div>
+        <div class="amount"><span class="unit">&#165;</span>499</div>
+        <div class="desc">7 平台 + 7 AI Agent<br>Go 版 + Docker 部署<br>永久使用，无限次数</div>
+        <a href="#contact" class="btn btn-primary">获取 Pro 版</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 联系 -->
+  <div class="section" id="contact">
+    <div class="contact">
+      <h3>获取 Pro 版 / 商务合作</h3>
+      <p style="margin-top: 12px;">微信：<strong>smart4906</strong></p>
+      <p style="font-size: 13px; color: #9090b0; margin-top: 8px;">添加请备注：Pro 版本</p>
+      <p style="margin-top: 16px;">
+        <a href="https://github.com/Smart75850/smart-agent" class="btn btn-outline" style="margin-right: 10px;">GitHub</a>
+        <a href="https://github.com/Smart75850/awesome-ai-solopreneur-tools" class="btn btn-outline">AI 工具精选</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Smart Agent | Built by <a href="https://github.com/Smart75850" style="color:#6366f1">@Smart75850</a>
+  </div>
+
+</div>
+</body>
+</html>
